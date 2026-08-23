@@ -3,7 +3,7 @@ import { Pressable, Text, View } from 'react-native';
 import { Link } from 'expo-router';
 import { Card, colors, Pill, ProgressBar } from '@/src/components/ui';
 import { challengeSavedAmount, formatMoney, remainingDays } from '@/src/lib/format';
-import { SavingsChallenge } from '@/src/types/savings';
+import type { SavingsChallenge } from '@/src/types/savings';
 
 export function ChallengeCard({ challenge }: { challenge: SavingsChallenge }) {
   const saved = challengeSavedAmount(challenge.contributions);

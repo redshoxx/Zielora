@@ -3,7 +3,6 @@ import { ScrollView, Text, TextInput, View } from 'react-native';
 import { useRouter } from 'expo-router';
 import { Card, colors, Pill, PrimaryButton } from '@/src/components/ui';
 import { useSavings } from '@/src/context/savings-context';
-import { ChallengeCategory } from '@/src/types/savings';
 
 const presets = [
   { label: '30 Tage', days: 30 },
@@ -122,19 +121,22 @@ export default function CreateScreen() {
         onPress={async () => {
           if (!valid) return;
           setSaving(true);
-          const id = await createChallenge({
-            title: title.trim(),
-            description: description.trim() || 'Mein persönliches Sparziel.',
-            targetAmount: targetNumber,
-            durationDays: days,
-            category: 'custom' as ChallengeCategory,
-            emoji,
-          });
-          setSaving(false);
-          setTitle('');
-          setTarget('');
-          setDescription('');
-          router.push({ pathname: '/challenge/[id]', params: { id } });
+          try {
+            const id = await createChallenge({
+              title: title.trim(),
+              description: description.trim() || 'Mein persönliches Sparziel.',
+              targetAmount: targetNumber,
+              durationDays: days,
+              category: 'custom',
+              emoji,
+            });
+            setTitle('');
+            setTarget('');
+            setDescription('');
+            router.push({ pathname: '/challenge/[id]', params: { id } });
+          } finally {
+            setSaving(false);
+          }
         }}
       />
     </ScrollView>

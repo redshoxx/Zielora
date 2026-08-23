@@ -8,7 +8,7 @@
     "ios": "expo start --ios",
     "android": "expo start --android",
     "check": "npx expo install --check",
-    "doctor": "npx expo-doctor@latest",
+    "doctor": "expo-doctor",
     "bundle:ios": "expo export --platform ios --output-dir dist --clear"
   },
   "dependencies": {
@@ -17,5 +17,8 @@
     "react": "19.2.3",
     "react-native": "0.85.3",
     "react-native-safe-area-context": "~5.7.0"
+  },
+  "devDependencies": {
+    "expo-doctor": "1.20.2"
   }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Pressable, Text, View, type StyleProp, type ViewStyle } from 'react-native';
 import { clamp } from '@/src/lib/format';
 
 export const colors = {
@@ -15,7 +15,7 @@ export const colors = {
   gold: '#C88A20',
 };
 
-export function Card({ children, style }: { children: React.ReactNode; style?: object }) {
+export function Card({ children, style }: { children: React.ReactNode; style?: StyleProp<ViewStyle> }) {
   return (
     <View
       style={[

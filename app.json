@@ -5,11 +5,13 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
+    "jsEngine": "jsc",
     "icon": "./assets/icon.png",
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.redshoxx.zielora",
-      "buildNumber": "1"
+      "buildNumber": "1",
+      "jsEngine": "jsc"
     },
     "plugins": ["expo-sqlite"]
   }

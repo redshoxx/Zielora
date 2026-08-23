@@ -1,5 +1,5 @@
 import Storage from 'expo-sqlite/kv-store';
-import { SavingsState } from '@/src/types/savings';
+import type { SavingsState } from '@/src/types/savings';
 
 const STORAGE_KEY = 'zielora.state.v1';
 

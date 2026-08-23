@@ -1,14 +1,13 @@
 import React from 'react';
-import { Image } from 'expo-image';
 import { Pressable, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { colors } from '@/src/components/ui';
 
-const meta: Record<string, { label: string; icon: string; activeIcon: string }> = {
-  index: { label: 'Übersicht', icon: 'sf:house', activeIcon: 'sf:house.fill' },
-  challenges: { label: 'Challenges', icon: 'sf:flag', activeIcon: 'sf:flag.fill' },
-  create: { label: 'Neu', icon: 'sf:plus.circle', activeIcon: 'sf:plus.circle.fill' },
-  more: { label: 'Mehr', icon: 'sf:ellipsis.circle', activeIcon: 'sf:ellipsis.circle.fill' },
+const meta: Record<string, { label: string; icon: string }> = {
+  index: { label: 'Übersicht', icon: '⌂' },
+  challenges: { label: 'Challenges', icon: '◆' },
+  create: { label: 'Neu', icon: '+' },
+  more: { label: 'Mehr', icon: '•••' },
 };
 
 export function BottomTabBar({ state, descriptors, navigation }: any) {
@@ -28,7 +27,7 @@ export function BottomTabBar({ state, descriptors, navigation }: any) {
       >
         {state.routes.map((route: any, index: number) => {
           const focused = state.index === index;
-          const item = meta[route.name] ?? { label: route.name, icon: 'sf:circle', activeIcon: 'sf:circle.fill' };
+          const item = meta[route.name] ?? { label: route.name, icon: '•' };
 
           const onPress = () => {
             const event = navigation.emit({ type: 'tabPress', target: route.key, canPreventDefault: true });
@@ -53,7 +52,18 @@ export function BottomTabBar({ state, descriptors, navigation }: any) {
                 opacity: pressed ? 0.72 : 1,
               })}
             >
-              <Image source={focused ? item.activeIcon : item.icon} style={{ width: 21, height: 21, tintColor: focused ? colors.accent : '#CFD9D2' }} />
+              <Text
+                style={{
+                  minWidth: 24,
+                  textAlign: 'center',
+                  fontSize: route.name === 'more' ? 15 : 22,
+                  lineHeight: 23,
+                  fontWeight: '900',
+                  color: focused ? colors.accent : '#CFD9D2',
+                }}
+              >
+                {item.icon}
+              </Text>
               <Text style={{ fontSize: 10.5, fontWeight: '800', color: focused ? colors.accent : '#CFD9D2' }}>{item.label}</Text>
             </Pressable>
           );

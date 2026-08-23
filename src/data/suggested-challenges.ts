@@ -1,4 +1,4 @@
-import { ChallengeTemplate } from '@/src/types/savings';
+import type { ChallengeTemplate } from '@/src/types/savings';
 
 export const suggestedChallenges: ChallengeTemplate[] = [
   {
@@ -72,5 +72,5 @@ export const suggestedChallenges: ChallengeTemplate[] = [
     durationDays: 364,
     category: 'weekly',
     emoji: '📆',
-  }
+  },
 ];

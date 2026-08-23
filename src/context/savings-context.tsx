@@ -1,11 +1,7 @@
-import React, { createContext, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import * as Haptics from 'expo-haptics';
 import { suggestedChallenges } from '@/src/data/suggested-challenges';
-import {
-  ChallengeCategory,
-  SavingsChallenge,
-  SavingsState,
-} from '@/src/types/savings';
+import type { ChallengeCategory, SavingsChallenge, SavingsState } from '@/src/types/savings';
 import {
   clearSavingsState,
   defaultSavingsState,
@@ -82,10 +78,7 @@ export function SavingsProvider({ children }: { children: React.ReactNode }) {
       contributions: [],
     };
 
-    await commit((current) => ({
-      ...current,
-      challenges: [challenge, ...current.challenges],
-    }));
+    await commit((current) => ({ ...current, challenges: [challenge, ...current.challenges] }));
     await tap('success');
     return id;
   }, [commit, tap]);
@@ -99,10 +92,7 @@ export function SavingsProvider({ children }: { children: React.ReactNode }) {
       createdAt: new Date().toISOString(),
       contributions: [],
     };
-    await commit((current) => ({
-      ...current,
-      challenges: [challenge, ...current.challenges],
-    }));
+    await commit((current) => ({ ...current, challenges: [challenge, ...current.challenges] }));
     await tap('success');
     return id;
   }, [commit, tap]);
@@ -159,22 +149,13 @@ export function SavingsProvider({ children }: { children: React.ReactNode }) {
     deleteChallenge,
     setHapticsEnabled,
     resetAll,
-  }), [
-    state,
-    hydrated,
-    activateSuggested,
-    createChallenge,
-    addContribution,
-    deleteChallenge,
-    setHapticsEnabled,
-    resetAll,
-  ]);
+  }), [state, hydrated, activateSuggested, createChallenge, addContribution, deleteChallenge, setHapticsEnabled, resetAll]);
 
   return <SavingsContext.Provider value={value}>{children}</SavingsContext.Provider>;
 }
 
 export function useSavings() {
-  const context = React.use(SavingsContext);
+  const context = useContext(SavingsContext);
   if (!context) throw new Error('useSavings must be used inside SavingsProvider');
   return context;
 }

@@ -1,7 +1,14 @@
 name: Build Zielora SideStore IPA
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
+
+concurrency:
+  group: zielora-ios-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build-ios:

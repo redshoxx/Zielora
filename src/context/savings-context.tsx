@@ -1,4 +1,5 @@
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
+import { Platform } from 'react-native';
 import * as Haptics from 'expo-haptics';
 import { suggestedChallenges } from '@/src/data/suggested-challenges';
 import type { ChallengeCategory, SavingsChallenge, SavingsState } from '@/src/types/savings';
@@ -53,7 +54,7 @@ export function SavingsProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const tap = useCallback(async (kind: 'light' | 'success' = 'light') => {
-    if (!stateRef.current.hapticsEnabled || process.env.EXPO_OS !== 'ios') return;
+    if (!stateRef.current.hapticsEnabled || Platform.OS !== 'ios') return;
     if (kind === 'success') {
       await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
       return;

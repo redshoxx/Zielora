@@ -38,16 +38,22 @@ jobs:
         run: npm install --no-audit --no-fund
 
       - name: Verify Expo dependencies
-        run: npx expo install --check
+        run: npm run check
 
       - name: Expo Doctor
-        run: npx expo-doctor@latest
+        run: npm run doctor
 
       - name: Verify iOS JavaScript bundle
         run: npm run bundle:ios
 
       - name: Expo prebuild
         run: npx expo prebuild --platform ios --clean --no-install
+
+      - name: Verify generated iOS engine
+        run: |
+          set -euo pipefail
+          cat ios/Podfile.properties.json
+          grep -q '"expo.jsEngine": "jsc"' ios/Podfile.properties.json
 
       - name: Install CocoaPods
         working-directory: ios
@@ -100,5 +106,6 @@ jobs:
           path: |
             xcodebuild.log
             ios/Podfile.lock
+            ios/Podfile.properties.json
           if-no-files-found: ignore
           retention-days: 7

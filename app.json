@@ -1,0 +1,32 @@
+{
+  "expo": {
+    "name": "Zielora",
+    "slug": "zielora",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "zielora",
+    "userInterfaceStyle": "dark",
+    "icon": "./assets/icon.png",
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.redshoxx.zielora",
+      "buildNumber": "1"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-sqlite",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#0B0F13",
+          "image": "./assets/icon.png",
+          "imageWidth": 170,
+          "resizeMode": "contain"
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}

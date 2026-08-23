@@ -4,22 +4,13 @@
     "slug": "zielora",
     "version": "1.0.0",
     "orientation": "portrait",
-    "scheme": "zielora",
     "userInterfaceStyle": "light",
+    "icon": "./assets/icon.png",
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.redshoxx.zielora",
       "buildNumber": "1"
     },
-    "plugins": [
-      "expo-router",
-      "expo-sqlite",
-      [
-        "expo-splash-screen",
-        {
-          "backgroundColor": "#0B0F13"
-        }
-      ]
-    ]
+    "plugins": ["expo-sqlite"]
   }
 }

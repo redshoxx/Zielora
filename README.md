@@ -1,27 +1,25 @@
 # Zielora
 
-Zielora ist eine lokal arbeitende Spar-App für iPhone mit eigenen und vorgeschlagenen Spar-Challenges.
+Zielora ist eine iPhone-optimierte Spar-App für eigene und vorgeschlagene Spar-Challenges.
 
-## Kernfunktionen
+## Funktionen
 
-- Eigene Spar-Challenges
-- Vorgefertigte Challenge-Vorschläge
-- Zielbetrag und Zeitraum
-- Einzahlungen und Fortschritt
-- Lokale Speicherung auf dem Gerät
-- iPhone-optimierte Navigation
-- Dark UI
+- eigene Spar-Challenges
+- vorgeschlagene Challenges
+- beliebige Einzahlungen
+- Fortschrittsanzeige
+- lokale Speicherung auf dem iPhone
+- eigene Bottom-Navigation
+- kein Konto und kein Backend
 
 ## Technik
 
-- Expo / React Native
-- Expo Router
-- TypeScript
-- expo-sqlite
-- iOS Bundle ID: `com.redshoxx.zielora`
+- Expo SDK 56
+- React Native 0.85
+- JavaScript
+- expo-sqlite KV Store
+- Bundle-ID `com.redshoxx.zielora`
 
-## SideStore IPA
+## SideStore
 
-Der GitHub-Workflow unter `.github/workflows/build-unsigned-ipa.yml` baut automatisch bei jedem Push auf `main` sowie manuell über **Actions → Build Zielora SideStore IPA → Run workflow** eine unsignierte `Zielora.ipa`.
-
-Nach erfolgreichem Lauf liegt sie als GitHub Actions Artifact `Zielora-SideStore-IPA` bereit und kann anschließend über SideStore signiert und installiert werden.
+Der GitHub-Workflow `.github/workflows/build-ios.yml` baut auf macOS 26 eine unsigned `Zielora.ipa`, die anschließend mit SideStore signiert und installiert werden kann.
